@@ -11,10 +11,16 @@ describe "StaticPages" do
                   :text => 'Sample App')
     end
 
-    it "should have the title with '| Home'" do
+    it "should have standard title" do
       visit '/static_pages/home'
       page.should have_selector('title',
-                  :text => "#{same_title} | Home")
+                  :text => "#{same_title}")
+    end
+
+    it "shouldn't have title with the 'Home'" do
+      visit '/static_pages/home'
+      page.should_not have_selector('title',
+                  :text => "Home")
     end
   end
 
