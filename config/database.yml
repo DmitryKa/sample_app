@@ -1,11 +1,12 @@
 common: &common
   adapter: postgresql
+  encoding: unicode
   username: postgres
   password: passw0rd # from psql setup, see Postgresql
 
 development:
   <<: *common
-  database: db_dev
+  database: db/sa_dev
   host: localhost
   pool: 5
   timeout: 5000
@@ -15,12 +16,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *common
-  database: db_test
+  database: db/sa_test
   pool: 5
   timeout: 5000
 
 production:
   <<: *common
-  database: db_prod
+  database: db/sa_prod
   pool: 5
   timeout: 5000
